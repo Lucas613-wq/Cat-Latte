@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento | Cat Latte</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="icon.png">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet">
+
+    <style>
+        /* Estilos do modal de confirmação */
+        .confirmacao-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(74, 52, 43, 0.5);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInOverlay 0.4s ease;
+        }
+
+        .confirmacao-overlay.ativo {
+            display: flex;
+        }
+
+        .confirmacao-card {
+            background: #fff;
+            border-radius: 35px;
+            padding: 60px 50px;
+            max-width: 520px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .confirmacao-card .icone-sucesso {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 0.6s ease 0.3s both;
+        }
+
+        .confirmacao-card h2 {
+            font-family: 'Playfair Display', serif;
+            color: #4A312C;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .confirmacao-card p {
+            color: #6E625D;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .confirmacao-card .nome-destaque {
+            color: #EC8DB0;
+            font-weight: 600;
+        }
+
+        .confirmacao-card .info-agendamento {
+            background: #FFF7F9;
+            border: 1px solid #FDE1EA;
+            border-radius: 18px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .confirmacao-card .info-agendamento p {
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .confirmacao-card .btn-voltar {
+            display: inline-block;
+            background: linear-gradient(90deg, #F5A8BF, #EC8DB0);
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 18px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: 0.35s;
+            margin-top: 15px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(236,141,176,0.28);
+        }
+
+        .confirmacao-card .btn-voltar:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(236,141,176,0.35);
+        }
+
+        @keyframes fadeInOverlay {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes bounce {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="" width="150">
+        </div>
+
+       <nav>
+    <a href="index.html">Início</a>
+</nav>
+    </header>
+
+    
+    <section class="agendamento" id="agendamento">
+        <div class="agendamento-container">
+
+            <!-- Lado Esquerdo -->
+            <div class="info">
+                <span class="subtitulo">AGENDAMENTO</span>
+
+                <h2>
+                    Agende sua visita <br>
+                    ao <span>Cat Latte</span> 
+                </h2>
+
+                <p>
+                    Preencha o formulário ao lado e venha viver
+                    momentos de café, carinho e ronronar.
+                </p>
+
+                <div class="card-info">
+                    <div class="icone">☕</div>
+                    <div>
+                        <h4>Um café feito com amor</h4>
+                        <p>Bebidas, doces e muito carinho para tornar seu dia especial.</p>
+                    </div>
+                </div>
+
+                <div class="card-info">
+                    <div class="icone">🐾</div>
+                    <div>
+                        <h4>Gatinhos felizes</h4>
+                        <p>Todos os gatos são vacinados, castrados e muito bem cuidados.</p>
+                    </div>
+                </div>
+
+                <div class="card-info">
+                    <div class="icone">🤍</div>
+                    <div>
+                        <h4>Ambiente tranquilo</h4>
+                        <p>Espaço pensado para o bem-estar dos visitantes e dos gatos.</p>
+                    </div>
+                </div>
+
+                <div class="aviso">
+                    <h3>Informações importantes</h3>
+                    <ul>
+                        <li> ▫️Crianças menores de 12 anos devem estar acompanhadas por um responsável.</li>
+                        <li> ▫️Não é permitido correr ou gritar dentro do café.</li>
+                        <li> ▫️Evite acordar ou pegar gatos que estiverem dormindo.</li>
+                        <li> ▫️Não ofereça alimentos aos gatos.</li>
+                        <li> ▫️Caso apresente sintomas gripais, remarque sua visita.</li>
+                        <li> ▫️Respeite sempre o espaço dos animais.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lado Direito -->
+            <div class="formulario">
+                <h3>Formulário de Agendamento</h3>
+
+                <form id="form-agendamento" onsubmit="return enviarAgendamento(event)">
+
+                    <div class="duas-colunas">
+                        <div class="campo">
+                            <label>Nome Completo</label>
+                            <input type="text" name="nome" placeholder="Seu nome" required>
+                        </div>
+
+                        <div class="campo">
+                            <label>E-mail</label>
+                            <input type="email" name="email" placeholder="seu@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label>Telefone / WhatsApp</label>
+                        <input type="text" name="telefone" placeholder="(41) 99999-9999" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Data da visita</label>
+                        <input type="date" name="data_visita" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Horário da Visita</label>
+                        <input type="time" id="horario" name="horario" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Quantidade de pessoas</label>
+                        <input type="number" name="qtd_pessoas" placeholder="Ex.: 2" min="1" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Observações</label>
+                        <textarea name="observacoes" rows="5" placeholder="Aniversário, acessibilidade, alergias..."></textarea>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <label>
+                            <input type="checkbox" required>
+                            Li e concordo com as regras de convivência do Cat Latte, e estou ciente de que a visita será cancelada caso não sejam respeitadas.
+                        </label>
+                    </div>
+
+                    <button type="submit">Enviar Agendamento</button>
+
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Modal de Confirmação -->
+    <div class="confirmacao-overlay" id="confirmacao-overlay">
+        <div class="confirmacao-card">
+            <div class="icone-sucesso">🐾</div>
+            <h2>Agendamento Confirmado!</h2>
+            <p>Obrigado, <span class="nome-destaque" id="conf-nome"></span>!</p>
+            <div class="info-agendamento">
+                <p>📅 <strong>Data:</strong> <span id="conf-data"></span></p>
+                <p>🕐 <strong>Horário:</strong> <span id="conf-hora"></span></p>
+                <p>👥 <strong>Pessoas:</strong> <span id="conf-pessoas"></span></p>
+            </div>
+            <p>Estamos ansiosos para recebê-lo! ☕✨</p>
+            <a href="index.html" class="btn-voltar">Voltar ao Início</a>
+        </div>
+    </div>
+
+    <script>
+        function enviarAgendamento(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('form-agendamento');
+            const nome = form.querySelector('[name="nome"]').value;
+            const dataVisita = form.querySelector('[name="data_visita"]').value;
+            const horario = form.querySelector('[name="horario"]').value;
+            const qtdPessoas = form.querySelector('[name="qtd_pessoas"]').value;
+
+            // Formata a data para exibição (DD/MM/AAAA)
+            const partes = dataVisita.split('-');
+            const dataFormatada = partes[2] + '/' + partes[1] + '/' + partes[0];
+
+            // Preenche o modal de confirmação
+            document.getElementById('conf-nome').textContent = nome;
+            document.getElementById('conf-data').textContent = dataFormatada;
+            document.getElementById('conf-hora').textContent = horario;
+            document.getElementById('conf-pessoas').textContent = qtdPessoas;
+
+            // Exibe o modal
+            document.getElementById('confirmacao-overlay').classList.add('ativo');
+
+            // Reseta o formulário
+            form.reset();
+
+            return false;
+        }
+
+        // Fecha o modal ao clicar fora do card
+        document.getElementById('confirmacao-overlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('ativo');
+            }
+        });
+    </script>
+
+</body>
+</html>
